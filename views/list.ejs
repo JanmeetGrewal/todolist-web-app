@@ -1,0 +1,49 @@
+<%- include("header") -%>
+
+  <div class="box" id="heading">
+    <h1> <%= listTitle %> </h1>
+  </div>
+
+  <div class="box">
+
+
+  <%  newListItems.forEach(function(item){ %>
+
+    <form action="/delete" method="post">
+      <div class="item">
+        <input type="checkbox" name="checkbox" value="<%=item._id%>" onChange="this.form.submit()">
+        <p><%=item.name%></p>
+      </div>
+      <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+    </form>
+  <%  }) %>
+
+
+      <form class="" action="/" method="post">
+        <div class="item">
+          <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+        </div>
+
+        <!-- <button type="submit" class="newItemButton" name="list" value="<%= listTitle %>">+</button> -->
+        <button type="submit" class="btn btn-primary btn-lg btn-block newItemButton " name="list" value="<%= listTitle %>">+</button>
+      </form>
+  </div>
+
+<div class="newListInput">
+  <form class="newList" action="/newList" method="post">
+    <div class="input-group mb-3">
+  <input type="text" name="newList" class="form-control" placeholder="New List" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-dark" type="submit" id="button-addon2">Add</button>
+  </div>
+</div>
+    <!-- <input type="text" name="newList" placeholder="New List" autocomplete="off"><br />
+    <button type="submit" class="btn btn-outline-dark" name="" value="">Add List</button> -->
+  </form>
+</div>
+
+
+
+</div>
+
+<%- include("footer") -%>
